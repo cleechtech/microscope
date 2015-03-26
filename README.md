@@ -1,6 +1,8 @@
 microscope
 ====
 
+Live version here: http://jasonshark_microscope.meteor.com/
+
 Code inside folders that are not `client/` or `server/` will run in both contexts
 
 Anything you put inside the `/lib` folder is guaranteed to load first 
