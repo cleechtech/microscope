@@ -10,7 +10,13 @@ Template.postSubmit.events({
 			title: $(e.target).find('[name=title]').val()
 		};
 
-		post._id = Posts.insert(post);	// returns the generated id
-		Router.go('postPage', post);
+		// A Meteor Method is a server-side function that is called client-side
+		// pass post object as an argument to postInsert function
+		Meteor.call('postInsert', post, function(error, result){
+			if (error) return alert(error.reason);
+
+			// reroute after post inserted successfully
+			Router.go('postPage', {_id: result._id});
+		});
 	}
 })
