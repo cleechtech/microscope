@@ -8,4 +8,9 @@ Meteor.publish('posts', function(){
 Meteor.publish('comments', function(postId){
 	check(postId, String);
 	return Comments.find({postId: postId});
+});
+
+Meteor.publish('notifications', function(){
+	// display current user's unread notifications
+	return Notifications.find({ userId: this.userId, read: false });
 })
